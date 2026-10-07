@@ -1,0 +1,997 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE */
+body {
+    background: #f5eee2;
+    color: #4b3b2c;
+    font-family: Georgia, serif;
+}
+
+a{
+    text-decoration: none;
+}
+/* MAIN CONTAINER */
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+/* SMALL DECORATION */
+.leaf {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 2px;
+
+    margin-bottom: 45px;
+}
+
+/* ENVELOPE */
+.envelope {
+    width: 380px;
+    height: 230px;
+
+    background: #e8dfc9;
+
+    position: relative;
+
+    border-radius: 4px;
+
+    box-shadow: 0 24px 50px rgba(60, 40, 20, 0.25);
+
+    cursor: pointer;
+}
+
+/* LETTER */
+.letter {
+    width: 80%;
+    height: 80%;
+
+    background: #fffaf1;
+
+    position: absolute;
+
+    left: 10%;
+    top: 10%;
+
+    text-align: center;
+
+    padding-top: 50px;
+
+    /* IMPORTANT */
+    z-index: 1;
+
+    transition: 1s;
+}
+
+.letter h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.letter p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* ENVELOPE FRONT */
+.inside {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(#f6efdd, #efe5cd);
+
+    border-radius: 4px;
+
+    /* IMPORTANT */
+    z-index: 2;
+
+    clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* TOP FLAP */
+.flap {
+    width: 100%;
+    height: 56%;
+
+    background: #f1e8d2;
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    /* IMPORTANT */
+    z-index: 3;
+
+    transform-origin: top;
+
+    transition: 1s;
+}
+/* SEAL */
+.seal {
+    width: 50px;
+    height: 50px;
+
+    background: radial-gradient(circle at 35% 30%, #f0d79a, #b88a35 70%);
+    color: #5b3f0e;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+
+    left: 165px;
+    top: 95px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+
+    /* Above envelope */
+    z-index: 4;
+
+    transition: 0.5s;
+}
+
+/* OPEN BUTTON */
+button {
+    margin-top: 45px;
+
+    background: none;
+    border: none;
+
+    color: #6b5137;
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #6b5137;
+
+    padding-bottom: 5px;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+/* =========================
+   OPEN ANIMATION
+   ========================= */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+    transform: translateY(-120px);
+
+    /* Bring letter forward */
+    z-index: 5;
+}
+
+.envelope.open .seal {
+    opacity: 0;
+}
+
+@media (max-width: 500px) {
+
+    .envelope {
+        width: 320px;
+        height: 195px;
+    }
+
+  
+
+    .seal {
+        left: 135px;
+        top: 80px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================
+   SCENE 2
+   ========================= */
+
+.scene2 {
+    min-height: 100vh;
+
+    background: #f5eee2;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+/* THE PAPER */
+
+.paper {
+    width: 600px;
+    max-width: 100%;
+
+    min-height: 650px;
+
+    background: #fffaf1;
+
+    padding: 70px;
+
+    box-shadow: 0 15px 30px rgba(60, 40, 20, 0.12);
+
+    position: relative;
+
+    animation: appear 1.5s ease;
+}
+
+/* SMALL TITLE */
+
+.small-text {
+    text-align: center;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #9a8061;
+
+    margin-bottom: 70px;
+}
+
+/* LETTER TITLE */
+
+.paper h2 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 40px;
+}
+
+/* MESSAGE */
+
+.message {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #5a4938;
+}
+
+/* SIGNATURE */
+
+.from {
+    margin-top: 70px;
+
+    font-style: italic;
+
+    text-align: right;
+
+    color: #6b5137;
+}
+
+/* NEXT BUTTON */
+
+.paper button {
+    position: absolute;
+
+    right: 70px;
+    bottom: 35px;
+
+    margin: 0;
+}
+
+/* PAPER ANIMATION */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   SCENE 3
+   ========================= */
+
+.scene3 {
+    min-height: 100vh;
+
+    background: #f5eee2;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+}
+
+/* SMALL TITLE */
+
+.memory-title {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #9a8061;
+
+    margin-bottom: 15px;
+}
+
+/* MAIN TITLE */
+
+.scene3 h2 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 60px;
+}
+
+/* PHOTOS CONTAINER */
+
+.photos {
+    width: 800px;
+    max-width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+}
+
+/* EACH PHOTO */
+
+.photo {
+    width: 220px;
+
+    background: white;
+
+    padding: 10px 10px 20px;
+
+    box-shadow: 0 10px 20px rgba(60, 40, 20, 0.15);
+
+    text-align: center;
+
+    transition: 0.4s;
+}
+
+/* IMAGE */
+
+.photo img {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+/* CAPTION */
+
+.photo p {
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+
+    color: #6b5137;
+}
+
+/* SLIGHT ROTATIONS */
+
+.photo1 {
+    transform: rotate(-5deg);
+}
+
+.photo2 {
+    transform: rotate(2deg);
+}
+
+.photo3 {
+    transform: rotate(5deg);
+}
+
+/* HOVER */
+
+.photo:hover {
+    transform: translateY(-10px) rotate(0deg);
+
+    box-shadow: 0 18px 30px rgba(60, 40, 20, 0.18);
+}
+
+/* NEXT BUTTON */
+
+.scene3 > button {
+    margin-top: 60px;
+}
+
+/* =========================
+   SCENE 4
+   ========================= */
+
+.scene4 {
+    min-height: 100vh;
+
+    background: #f5eee2;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+}
+
+/* SMALL TITLE */
+
+.message-title {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #9a8061;
+
+    margin-bottom: 15px;
+}
+
+/* MAIN TITLE */
+
+.scene4 h2 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 60px;
+}
+
+/* NOTES */
+
+.notes {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+}
+
+/* EACH NOTE */
+
+.note {
+    width: 190px;
+    height: 190px;
+
+    background: #fffaf1;
+
+    padding: 35px 20px;
+
+    box-shadow: 0 10px 20px rgba(60, 40, 20, 0.12);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+/* NOTE TEXT */
+
+.note p {
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: #5a4938;
+}
+
+/* DIFFERENT ANGLES */
+
+.note1 {
+    transform: rotate(-5deg);
+}
+
+.note2 {
+    transform: rotate(2deg);
+}
+
+.note3 {
+    transform: rotate(5deg);
+}
+
+/* HOVER */
+
+.note:hover {
+    transform: translateY(-10px) rotate(0deg);
+
+    box-shadow: 0 18px 30px rgba(60, 40, 20, 0.18);
+}
+
+/* =========================
+   MESSAGE POPUP
+   ========================= */
+
+.message-box {
+    width: 500px;
+    max-width: 90%;
+
+    background: #fffaf1;
+
+    padding: 50px;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0 20px 40px rgba(40, 30, 20, 0.25);
+
+    text-align: center;
+
+    display: none;
+
+    z-index: 10;
+}
+
+/* CLOSE BUTTON */
+
+.message-box span {
+    position: absolute;
+
+    right: 20px;
+    top: 15px;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    color: #6b5137;
+}
+
+/* POPUP TITLE */
+
+.message-box h3 {
+    font-family: Georgia, serif;
+
+    font-size: 27px;
+
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+/* POPUP MESSAGE */
+
+.message-box p {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #5a4938;
+}
+
+/* SIGNATURE */
+
+.message-box p:last-child {
+    margin-top: 30px;
+
+    font-style: italic;
+}
+
+/* NEXT BUTTON */
+
+.scene4 > button {
+    margin-top: 65px;
+}
+
+
+/* =========================
+   SCENE 5
+   ========================= */
+
+.scene5 {
+    min-height: 100vh;
+
+    background: #f5eee2;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+/* SMALL TITLE */
+
+.music-title {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #9a8061;
+
+    margin-bottom: 15px;
+}
+
+/* MAIN TITLE */
+
+.scene5 h2 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 50px;
+}
+
+/* RECORD */
+
+.record {
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background: #29251f;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 15px 30px rgba(40, 30, 20, 0.25);
+
+    cursor: pointer;
+}
+
+/* RECORD LINES */
+
+.record::before {
+    content: "";
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    border: 1px solid #6c6254;
+
+    position: absolute;
+}
+
+.record::after {
+    content: "";
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    border: 1px solid #6c6254;
+
+    position: absolute;
+}
+
+/* CENTER OF RECORD */
+
+.record-center {
+    width: 65px;
+    height: 65px;
+
+    background: #a9824d;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-size: 22px;
+
+    z-index: 2;
+}
+
+/* SPINNING RECORD */
+
+.record.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+/* SONG NAME */
+
+.song-name {
+    margin-top: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    color: #6b5137;
+}
+
+/* BUTTONS */
+
+.scene5 button {
+    background: none;
+
+    border: none;
+
+    color: #6b5137;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #6b5137;
+
+    padding-bottom: 5px;
+
+    margin-top: 25px;
+}
+
+
+.scene5 button:hover {
+    opacity: 0.6;
+}
+
+#scene5 {
+  position: relative;
+  overflow: hidden;
+}
+
+#bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 0;
+}
+
+#bgVideo.show {
+  opacity: 1;
+}
+
+#scene5 > *:not(video) {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   FINAL SCENE
+   ========================= */
+
+.final {
+    min-height: 100vh;
+
+    background: #f5eee2;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+/* FINAL CONTENT */
+
+.final-content {
+    animation: finalAppear 3s ease;
+}
+
+/* HEART */
+
+.heart {
+    font-size: 45px;
+
+    color: #a9824d;
+
+    margin-bottom: 40px;
+
+    animation: heartAppear 2s ease;
+}
+
+/* SMALL TEXT */
+
+.final-small {
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+
+    color: #6b5137;
+}
+
+/* MESSAGE */
+
+.final-message {
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #5a4938;
+
+    margin-bottom: 55px;
+}
+
+/* MAIN TITLE */
+
+.final h1 {
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    line-height: 1.3;
+
+    color: #4b3b2c;
+}
+
+/* SIGNATURE */
+
+.signature {
+    margin-top: 55px;
+
+    font-family: Georgia, serif;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: #806a50;
+}
+
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes finalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes heartAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+

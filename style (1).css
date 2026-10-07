@@ -1,0 +1,300 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE */
+body {
+    background: #f5eee2;
+    color: #4b3b2c;
+    font-family: Georgia, serif;
+}
+
+a{
+    text-decoration: none;
+}
+/* MAIN CONTAINER */
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.hint {
+    font-size: 13px;
+    letter-spacing: 3px;
+
+    color: #9a8061;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   STAGE (globe + picture)
+   ========================= */
+
+/* The square box that holds everything */
+.stage {
+    width: 100%;
+    max-width: 640px;
+
+    /* Makes the box a perfect square */
+    aspect-ratio: 1;
+
+    /* Lets us place things inside it with "absolute" */
+    position: relative;
+}
+
+/* THE GLOBE */
+#globe {
+    position: absolute;
+
+    /* Centered inside the stage */
+    left: 17%;
+    top: 17%;
+    width: 66%;
+    height: 66%;
+
+    /* Lets us drag on a phone without the page scrolling */
+    touch-action: none;
+    cursor: grab;
+}
+
+#globe:active {
+    cursor: grabbing;
+}
+
+
+/* =========================
+   PICTURE (like a paper photo)
+   ========================= */
+
+.picture {
+    position: absolute;
+
+    width: 21%;
+    aspect-ratio: 1;
+
+    /* Puts the CENTER of the picture on the dot */
+    /* (script.js sets left and top) */
+    /* The small rotate gives it a paper-photo look */
+    transform: translate(-50%, -50%) rotate(-4deg);
+
+    /* White paper frame */
+    background: #fffaf1;
+    border: 5px solid #fffaf1;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 20px rgba(60, 40, 20, 0.25);
+
+    /* Hidden until Next or Back is clicked */
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    /* Clicks go through to the globe underneath */
+    pointer-events: none;
+}
+
+/* THE PHOTO */
+.picture img {
+    width: 100%;
+    height: 100%;
+
+    /* Fills the box without stretching the photo */
+    object-fit: cover;
+
+    display: block;
+}
+
+/* NAME ON THE PICTURE */
+.picture span {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 10px 2px 3px;
+
+    font-size: 11px;
+    color: white;
+    text-align: center;
+
+    background: linear-gradient(transparent, rgba(60, 40, 20, 0.7));
+}
+
+
+/* =========================
+   TEXT UNDER THE GLOBE
+   ========================= */
+
+.place-name {
+    margin-top: 10px;
+
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-align: center;
+
+    color: #6b5137;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.buttons {
+    display: flex;
+    gap: 40px;
+
+    margin-top: 30px;
+}
+
+button {
+    background: none;
+    border: none;
+
+    color: #6b5137;
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #6b5137;
+
+    padding-bottom: 5px;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+
+/* =========================
+   MEDIA QUERIES
+   (change the page for different devices)
+   ========================= */
+
+/* LARGE SCREENS (laptops and desktops) */
+@media (min-width: 1200px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .stage {
+        max-width: 760px;
+    }
+
+    .picture span {
+        font-size: 13px;
+    }
+
+    .place-name {
+        font-size: 20px;
+    }
+}
+
+
+/* TABLETS */
+@media (max-width: 900px) {
+
+    .stage {
+        max-width: 560px;
+    }
+}
+
+
+/* PHONES */
+@media (max-width: 500px) {
+
+    .container {
+        padding: 12px 8px;
+    }
+
+    h1 {
+        font-size: 21px;
+        letter-spacing: 1px;
+    }
+
+    .hint {
+        font-size: 11px;
+        letter-spacing: 2px;
+
+        margin-bottom: 8px;
+    }
+
+    /* Bigger picture so it is easy to see on a small screen */
+    .picture {
+        width: 25%;
+        border-width: 4px;
+    }
+
+    .picture span {
+        font-size: 10px;
+        padding-top: 8px;
+    }
+
+    .place-name {
+        font-size: 16px;
+    }
+
+    /* Bigger area to tap with a finger */
+    .buttons {
+        gap: 30px;
+        margin-top: 18px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px 6px;
+    }
+}
+
+
+/* PHONES TURNED SIDEWAYS (screen is short) */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .hint {
+        display: none;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    /* The globe is sized by the screen HEIGHT so it fits */
+    .stage {
+        width: 62vh;
+    }
+
+    .place-name {
+        margin-top: 0;
+    }
+
+    .buttons {
+        margin-top: 6px;
+    }
+}

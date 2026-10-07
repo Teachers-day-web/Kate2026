@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Picture Marquee</title>
+
+    <!-- Makes the page fit the width of the phone screen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style12.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Title -->
+        <p class="small-title"><a href="index.html">A GALLERY</p></a>
+        <h1>Our Mother,<br>in pictures.</h1>
+
+        <!-- Row 1 (moves to the left) -->
+        <div class="marquee">
+            <div class="track" id="row1"></div>
+        </div>
+
+        <!-- Row 2 (moves to the right) -->
+        <div class="marquee">
+            <div class="track reverse" id="row2"></div>
+        </div>
+
+        <!-- Pause button -->
+        <button onclick="toggleMarquee()" id="pauseButton">
+            ❚❚ Pause
+        </button>
+
+        <p class="hint">Hover over a photo to stop it.</p>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script123.js"></script>
+
+</body>
+</html>

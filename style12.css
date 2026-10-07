@@ -1,0 +1,287 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE */
+body {
+    background: #f5eee2;
+    color: #4b3b2c;
+    font-family: Georgia, serif;
+
+    /* Stops the page from scrolling sideways */
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+/* MAIN CONTAINER */
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 0;
+}
+
+/* SMALL TITLE */
+.small-title {
+    font-size: 13px;
+    letter-spacing: 4px;
+
+    color: #9a8061;
+
+    margin-bottom: 15px;
+}
+
+/* MAIN TITLE */
+h1 {
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    line-height: 1.4;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   MARQUEE
+   ========================= */
+
+/* The window that the photos move through */
+.marquee {
+    width: 100%;
+
+    /* Hides the photos that are outside the window */
+    overflow: hidden;
+
+    /* Space so the shadows and tilts are not cut off */
+    padding: 25px 0;
+
+    /* The photos fade out at the left and right edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* The long strip that holds all the photos in one line */
+.track {
+    display: flex;
+
+    /* As wide as all the photos together */
+    width: max-content;
+
+    /* Move the strip: name, time, speed, repeat forever */
+    animation: scroll 40s linear infinite;
+}
+
+/* Row 2 moves the other way, a little slower */
+.track.reverse {
+    animation-direction: reverse;
+    animation-duration: 50s;
+}
+
+/* Stop moving when the mouse is over the marquee */
+.marquee:hover .track {
+    animation-play-state: paused;
+}
+
+/* Stop moving when the Pause button is clicked */
+body.paused .track {
+    animation-play-state: paused;
+}
+
+/* THE MOVEMENT */
+/* The photos are in the strip TWICE. */
+/* We slide the strip by half, then it jumps back, */
+/* and you can't see the jump because both halves look the same. */
+
+@keyframes scroll {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================
+   PHOTOS
+   ========================= */
+
+/* EACH PHOTO */
+.photo {
+    width: 220px;
+
+    background: white;
+
+    padding: 10px 10px 20px;
+
+    /* Space between photos */
+    /* (margin, not gap, so the loop is exactly half) */
+    margin-right: 25px;
+
+    box-shadow: 0 10px 20px rgba(60, 40, 20, 0.15);
+
+    text-align: center;
+
+    /* Don't let the photo get squeezed */
+    flex-shrink: 0;
+
+    transition: 0.4s;
+}
+
+/* IMAGE */
+.photo img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+/* CAPTION */
+.photo p {
+    font-size: 13px;
+
+    color: #6b5137;
+}
+
+/* SLIGHT ROTATIONS (a different tilt for each photo) */
+
+.photo:nth-child(4n + 1) {
+    transform: rotate(-4deg);
+}
+
+.photo:nth-child(4n + 2) {
+    transform: rotate(2deg);
+}
+
+.photo:nth-child(4n + 3) {
+    transform: rotate(-1deg);
+}
+
+.photo:nth-child(4n + 4) {
+    transform: rotate(4deg);
+}
+
+/* HOVER */
+.photo:hover {
+    transform: translateY(-10px) rotate(0deg);
+
+    box-shadow: 0 18px 30px rgba(60, 40, 20, 0.18);
+}
+
+
+/* =========================
+   BUTTON AND HINT
+   ========================= */
+
+button {
+    margin-top: 30px;
+
+    background: none;
+    border: none;
+
+    color: #6b5137;
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid #6b5137;
+
+    padding-bottom: 5px;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+.hint {
+    margin-top: 20px;
+
+    font-size: 13px;
+    font-style: italic;
+
+    color: #9a8061;
+}
+
+
+/* =========================
+   MEDIA QUERIES
+   (change the page for different devices)
+   ========================= */
+
+/* LARGE SCREENS */
+@media (min-width: 1200px) {
+
+    .photo {
+        width: 260px;
+    }
+
+    .photo img {
+        height: 260px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+}
+
+
+/* PHONES */
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 24px;
+
+        margin-bottom: 20px;
+    }
+
+    .photo {
+        width: 160px;
+
+        margin-right: 18px;
+    }
+
+    .photo img {
+        height: 160px;
+    }
+
+    .photo p {
+        font-size: 12px;
+    }
+}
+
+
+/* PEOPLE WHO TURN OFF MOTION IN THEIR DEVICE SETTINGS */
+/* The photos stay still and the row can be scrolled by hand */
+@media (prefers-reduced-motion: reduce) {
+
+    .track {
+        animation: none;
+    }
+
+    .marquee {
+        overflow-x: auto;
+    }
+}
+
+

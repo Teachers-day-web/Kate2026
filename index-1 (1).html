@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our World</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style (1).css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Title -->
+        <a href="index.html"><h1>Our world</h1></a>
+        <p class="hint">Drag the globe, or use Next and Back.</p>
+
+        <!-- The stage holds the globe and the picture together -->
+        <div class="stage">
+
+            <!-- The globe is drawn on this canvas by script.js -->
+            <canvas id="globe"></canvas>
+
+            <!-- The picture that appears on the dot (filled in by script.js) -->
+            <div class="picture" id="picture"></div>
+
+        </div>
+
+        <!-- Name of the place -->
+        <p class="place-name" id="placeName">Press Next to begin</p>
+
+        <!-- Back and Next buttons -->
+        <div class="buttons">
+            <button onclick="backPlace()">‹ Back</button>
+            <button onclick="nextPlace()">Next ›</button>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script12.js"></script>
+
+</body>
+</html>

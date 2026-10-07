@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers' Day</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Small decoration -->
+        <div class="leaf">⌁</div>
+
+        <!-- Title -->
+        <h1>For the teachers who<br>make a difference.</h1>
+
+        <!-- Envelope -->
+        <div class="envelope" id="envelope">
+
+            <!-- Inside of the envelope -->
+            <div class="inside"></div>
+
+            <!-- Letter -->
+            <div class="letter">
+                <h2>Thank You</h2>
+                <p>For everything you do.</p>
+            </div>
+
+            <!-- Envelope flap -->
+            <div class="flap"></div>
+
+            <!-- Wax seal -->
+            <div class="seal">✦</div>
+
+        </div>
+
+        <!-- Open button -->
+        <button onclick="openLetter()">Open the letter →</button>
+
+    </div>
+  
+  <!-- SCENE 2 -->
+<div class="scene2" id="scene2">
+
+    <div class="paper">
+
+        <p class="small-text">A letter of appreciation</p>
+
+        <h2>Dear Teacherakas (Kate F. Morales),</h2>
+
+        <p class="message">
+            Some lessons are taught inside the classroom.
+            <br><br>
+            But some are carried with us long after
+            the lesson ends.
+            <br><br>
+            Thank you for your patience, guidance,
+            and belief in us.
+        </p>
+
+        <p class="from">
+            — Your Students
+        </p>
+
+        <button onclick="nextScene()">
+            Next →
+        </button>
+
+    </div>
+
+</div>
+  
+  
+  <!-- SCENE 3 -->
+<div class="scene3" id="scene3">
+
+    <p class="memory-title">MEMORIES</p>
+
+    <h2>Moments we'll remember</h2>
+
+    <div class="photos">
+
+        <!-- Photo 1 -->
+        <div class="photo photo1">
+            <img src="class.jpeg">
+            <a href="index-1 (1).html"> <p>Moments in the classroom</p></a>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="photo photo2">
+            <img src="tcday.jpg">
+            <a href="index-12.html"><p>Celebrating together</p></a>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="photo photo3">
+            <img src="bthdycp.jpg">
+            <a href="index123.html"><p>Memories we'll keep</p></a>
+        </div>
+
+    </div>
+
+    <button onclick="nextToScene4()">
+        Next →
+    </button>
+
+</div>
+  
+  
+  <!-- SCENE 4 -->
+<div class="scene4" id="scene4">
+
+    <p class="message-title">A FEW WORDS</p>
+
+    <h2>From your students</h2>
+
+    <div class="notes">
+
+        <!-- NOTE 1 -->
+        <div class="note note1" onclick="openNote(1)">
+            <p>Thank you<br>for believing<br>in us.</p>
+        </div>
+
+        <!-- NOTE 2 -->
+        <div class="note note2" onclick="openNote(2)">
+            <p>You helped<br>us grow.</p>
+        </div>
+
+        <!-- NOTE 3 -->
+        <div class="note note3" onclick="openNote(3)">
+            <p>We will<br>remember<br>your lessons.</p>
+        </div>
+
+    </div>
+
+    <!-- Hidden full message -->
+    <div class="message-box" id="messageBox">
+
+        <span onclick="closeNote()">×</span>
+
+        <h3 id="noteTitle">Dear Teacher,</h3>
+
+        <p id="noteText">
+            Thank you for being patient with us,
+            guiding us, and believing in us.
+        </p>
+
+        <p>— Your Student</p>
+
+    </div>
+
+    <button onclick="nextToScene5()">
+        Next →
+    </button>
+
+</div>
+  
+  
+  
+  <!-- SCENE 5 -->
+<div class="scene5" id="scene5">
+
+    <p class="music-title">A LITTLE SOMETHING</p>
+
+    <h2>A song for our teachers</h2>
+
+    <!-- Record -->
+    <div class="record" id="record">
+
+        <div class="record-center">
+            ♪
+        </div>
+
+    </div>
+
+    <p class="song-name">
+        A song of appreciation
+    </p>
+
+    <!-- Music button -->
+    <button onclick="playMusic()" id="musicButton">
+        ▶ Play
+    </button>
+
+    
+    <video id="bgVideo" loop muted playsinline>
+  <source src="carry.mp4" type="video/mp4">
+</video>
+    
+    
+    <button onclick="nextToFinal()">
+        Next →
+    </button>
+
+    <!-- Music -->
+    <audio id="music">
+        <source src="mother.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+  
+  
+  <!-- FINAL SCENE -->
+<div class="final" id="final">
+
+    <div class="final-content">
+
+        <div class="heart">♡</div>
+
+        <p class="final-small">
+            To our teachers,
+        </p>
+
+        <p class="final-message">
+            Thank you for teaching us,<br>
+            guiding us, and believing in us.
+        </p>
+
+        <h1>
+            HAPPY<br>
+            TEACHERS' DAY
+        </h1>
+
+        <p class="signature">
+            With gratitude,<br>
+            Your Students
+        </p>
+
+    </div>
+
+</div>
+  
+  
+  
+  
+  
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
